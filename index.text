@@ -19,3 +19,41 @@ GOAL: in foglio di testo, scrivere le query necessarie per rispondere ai seguent
 5) SELECT * FROM ospiti WHERE name LIKE 'E%'; (PER NOME)
 6) SELECT name, lastname, YEAR(NOW()) - YEAR(date_of_birth) AS age FROM ospiti WHERE YEAR(NOW()) - YEAR(date_of_birth) < '30';
 7) SELECT * FROM prenotazioni WHERE created_at < '2018-05-01';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-EXERCISE first part
+
+GOAL: come ieri, generare le query per rispondere alle interrogazioni in allegato:
+1) Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
+2) Stampare tutti gli ospiti per ogni prenotazione.
+3) Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018.
+4) Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano.
+5) Prendi i dati di fatturazione per la prenotazione con id=7.
+6) Le stanze sono state tutte prenotate almeno una volta?(Visualizzare le stanze non ancora prenotate)
+
+-ANSWERS
+
+1)
+2)
+3)
+4)
+5)
+6)
+
+-EXERCISE second part
+
+GOAL: come ieri, generare le query per rispondere alle interrogazioni in allegato:
+1) Conta gli ospiti raggruppandoli per anno di nascita.
+2) Somma i prezzi dei pagamenti raggruppandoli per status.
+3) Conta quante volte e stata prenotata ogni stanza.
+4) Fai una analisi per vedere se ci sono ore in cui le prenotazioni sono più frequenti.
+5) Quante prenotazioni ha fatto l'ospite che ha fatto piu prenotazioni?(quante, non chi!).
+
+-ANSWERS
+
+1)
+2)
+3)
+4)
+5)
