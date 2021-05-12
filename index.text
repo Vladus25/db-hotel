@@ -88,6 +88,8 @@ GOAL: come ieri, generare le query per rispondere alle interrogazioni in allegat
       ON prenotazioni.stanza_id = stanze.id
    WHERE prenotazioni.stanza_id IS NULL
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 -EXERCISE second part
 
 GOAL: come ieri, generare le query per rispondere alle interrogazioni in allegato:
