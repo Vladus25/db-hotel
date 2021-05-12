@@ -34,12 +34,59 @@ GOAL: come ieri, generare le query per rispondere alle interrogazioni in allegat
 
 -ANSWERS
 
-1)
-2)
-3)
-4)
-5)
-6)
+1) SELECT ospiti.name, ospiti.lastname, ospite_id
+   FROM prenotazioni
+   JOIN prenotazioni_has_ospiti
+      ON prenotazioni.id = prenotazioni_has_ospiti.prenotazione_id
+   JOIN ospiti
+      ON prenotazioni_has_ospiti.ospite_id = ospiti.id
+   GROUP BY prenotazioni_has_ospiti.ospite_id
+   HAVING COUNT(prenotazioni_has_ospiti.ospite_id) > 2
+
+2) SELECT prenotazioni_has_ospiti.prenotazione_id, ospiti.name AS nome_ospite, ospiti.lastname AS cognome_ospite
+    FROM ospiti
+    JOIN prenotazioni_has_ospiti
+      ON ospiti.id = prenotazioni_has_ospiti.ospite_id
+    JOIN prenotazioni
+      ON prenotazioni_has_ospiti.prenotazione_id = prenotazioni.id
+
+3) SELECT
+          ospiti.name AS nome_ospite, ospiti.lastname AS cognome_ospite,
+          pagamenti.price,
+          paganti.name AS nome_pagante, paganti.lastname AS cognome_pagante,
+          DATE(prenotazioni.created_at)
+    FROM ospiti
+    JOIN prenotazioni_has_ospiti
+      ON ospiti.id = prenotazioni_has_ospiti.ospite_id
+    JOIN prenotazioni
+      ON prenotazioni_has_ospiti.prenotazione_id = prenotazioni.id
+    JOIN pagamenti
+      ON prenotazioni.id = pagamenti.prenotazione_id
+    JOIN paganti
+      ON pagamenti.pagante_id = paganti.id
+    WHERE prenotazioni.created_at > '2018-05-01' AND prenotazioni.created_at < '2018-06-01'
+
+4) SELECT SUM(pagamenti.price)
+	 FROM prenotazioni
+	 JOIN stanze
+	   ON prenotazioni.stanza_id = stanze.id
+	 JOIN pagamenti
+		 ON prenotazioni.id = pagamenti.prenotazione_id
+	 WHERE stanze.floor LIKE 1;
+
+5) SELECT prenotazioni.id, paganti.name, paganti.lastname, paganti.address, paganti.created_at, paganti.updated_at
+   FROM paganti
+   JOIN pagamenti
+      ON paganti.id = pagamenti.pagante_id
+   JOIN prenotazioni
+      ON prenotazioni.id = pagamenti.prenotazione_id
+   WHERE prenotazioni.id = 7
+
+6) SELECT stanze.id, stanze.room_number, stanze.floor, stanze.beds
+   FROM prenotazioni
+   RIGHT JOIN stanze
+      ON prenotazioni.stanza_id = stanze.id
+   WHERE prenotazioni.stanza_id IS NULL
 
 -EXERCISE second part
 
